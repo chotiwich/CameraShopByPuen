@@ -1,45 +1,37 @@
 <%- include('../includes/head.ejs') %> 
 
-<div class="product-big-title-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="product-bit-title text-center">
-                    <h2>Shop</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="single-product-area">
+<div class="cart-view-table">
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <% if (prods.length > 0) { %> 
+        <% if (prods.length > 0) { %> 
                         <% prods.map((product, index) => { %>
-                    <div class="product-upper">
-                        <img src="<%- product.img_path%>" alt="" />
-                    </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="single-shop-product">
+                     <a href="<%- '/products/detail/'+product._id%>">
+                            
+                    <div class="aa-product-img" >
+                        <img src="<%- product.img_path%>" alt="" width="400" height="400"/>
+                    </div></a>
                     <h2><%- product.product_name%></h2>
                     <div class="product-carousel-price">
                         <!-- <ins>$899.00</ins> <del>$999.00</del> -->
                         <%- product.price%>
                     </div>
-
+                    <div>
+                            
+                    </div>       
                     <div class="product-option-shop">
                         <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
                     </div>
-                    <% }) %> 
-                    <% } else   { %>
-                    <h1>No Products Found!</h1>
-                    <% } %>
+                   
                 </div>
             </div>
         </div>
-
+        <% }) %> 
+        <% } else   { %>
+        <h1>No Products Found!</h1>
+        <% } %>
         <div class="row">
             <div class="col-md-12">
                 <div class="product-pagination text-center">
@@ -66,6 +58,4 @@
             </div>
         </div>
     </div>
-</div>
-
 <%- include('../includes/end.ejs') %>

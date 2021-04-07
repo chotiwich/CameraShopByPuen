@@ -4,41 +4,54 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="product-bit-title text-center">
-                    <h2>Shop</h2>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="aa-product-area">
+                    <div class="aa-product-inner">
+                        <div class="tab-content">
+                            <ul class="aa-product-catg">
+                                <!-- start single product item -->
+                                <% if (prods.length > 0) { %> 
+                                    <% prods.map((product, index) => { %>
+                                <li>
+                                    
+                                    <figure>
+                                      <a class="aa-product-img" href="#"><img src="<%- product.img_path%>" width="260" height="295" /></a>
+                                      <!-- <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a> -->
+                                      <a class="aa-add-card-btn"href="<%- '/products/detail/'+product._id%>"><span class="fa fa-search"></span>Detail</a>
+                                        <figcaption>
+                                        <h4 class="aa-product-title"><%- product.product_name%></a></h4>
+                                        <span class="aa-product-price"><%- product.price%> ฿</span>
+                                      </figcaption>
+                                    </figure>                        
+                                    <div class="aa-product-hvr-content">
+                                      <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+                                      <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
+                                      <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                          
+                                    </div>
+                                    <% }) %> 
+                                                <% } else   { %>
+                                                <h1> No Products Found!</h1>
+                                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="single-product-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <% if (prods.length > 0) { %> 
-                        <% prods.map((product, index) => { %>
-                    <div class="product-upper">
-                        <img src="<%- product.img_path%>" alt="" />
-                    </div>
-                    <h2><%- product.product_name%></h2>
-                    <div class="product-carousel-price">
-                        <!-- <ins>$899.00</ins> <del>$999.00</del> -->
-                        <%- product.price%>
-                    </div>
 
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                    <% }) %> 
-                    <% } else   { %>
-                    <h1>No Products Found!</h1>
-                    <% } %>
-                </div>
-            </div>
-        </div>
+
 
         <div class="row">
             <div class="col-md-12">

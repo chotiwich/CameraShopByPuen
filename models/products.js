@@ -16,12 +16,12 @@ class Products {
         const db = getDb();
         let dbOp;
         if (this._id) {
-            // Update the product
+            // Update the product db.products.updateOne({_id: ObjectId(..)},{$set:{}});
             dbOp = db
                 .collection('products')
                 .updateOne({ _id: new mongodb.ObjectId(this._id) }, { $set: this });
         } else {
-            // Insert product
+            // Insert product db.products.insertOne({"key1":val1,"key2":val2})
             dbOp = db.collection('products').insertOne(this);
         }
         return dbOp
@@ -36,7 +36,7 @@ class Products {
     static fetchAll() {
         const db = getDb();
         return db
-            .collection('products')
+            .collection('products')  // db.products.find({_id,ObjectId('...')})
             .find()
             .toArray()
             .then(products => {
@@ -52,7 +52,7 @@ class Products {
         const db = getDb();
         return db
             .collection('products')
-            .find({ _id: new mongodb.ObjectId(prodId) })
+            .find({ _id: new mongodb.ObjectId(prodId) }) // db.products.deleteOne({_id: ObjectID('...')})
             .next()
             .then(product => {
                 console.log(product);

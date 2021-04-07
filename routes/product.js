@@ -13,6 +13,12 @@ router.get('/insert', productsController.insert);
 
 router.get('/shop', productsController.getSearchProduct);
 
+router.get('/Lenses', productsController.getSearchProductByLenses);
+
+router.get('/Flashes', productsController.getSearchProductByFlashes);
+
+router.get('/Digital_Cameras', productsController.getSearchProductByDigital_Cameras);
+
 router.get('/products', productsController.getSearchProduct1);
 
 // router.get('/insert', productsController.getAddProduct);

@@ -209,3 +209,45 @@ exports.getDeleteProduct = (req, res, next) => {
         })
         .catch(err => console.log(err));
 };
+
+exports.getSearchProductByLenses = (req, res, next) => {
+
+    Product.fetchAllByLenses()
+        .then(products => { 
+            res.render('products/Lenses', {
+                pageTitle: 'Search Lenses',
+                prods: products,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+exports.getSearchProductByFlashes = (req, res, next) => {
+
+    Product.fetchAllByFlashes()
+        .then(products => { 
+            res.render('products/Flashes', {
+                pageTitle: 'Search Flashes',
+                prods: products,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+exports.getSearchProductByDigital_Cameras = (req, res, next) => {
+
+    Product.fetchAllByDigital_Cameras()
+        .then(products => { 
+            res.render('products/Digital_Cameras', {
+                pageTitle: 'Search Digital Cameras',
+                prods: products,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}

@@ -1,9 +1,15 @@
 <%- include('../includes/head.ejs') %>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200&family=Prompt:wght@100&display=swap');
+    .newfont {
+        font-family: 'Kanit', sans-serif;
+    }
+  </style>
         <div class="container mt-12">
             <div class="row">
                 <div class="col-md-12">
                     <br>
-                    <h2>Update Products</h2>
+                    <h2 class="newfont">Update Products</h2>
                     <hr>
                 </div>
             </div>
@@ -18,27 +24,27 @@
                                 <% } %>
                                     <form method="POST" action="/products/update">
                                         <input type="hidden" name="product_id" value="<%- product_id %>">
-                                        <div class="form-group">
+                                        <div class="form-group newfont">
                                             <label for="category_name">Category name :</label>
                                             <input type="text" class="form-control" name="category_name" placeholder="category_name" value="<%- category_name %>">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group newfont">
                                             <label for="product_name">Product Name :</label>
                                             <input type="text" class="form-control" name="product_name" placeholder="Product Name" value="<%= product_name %>">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group newfont">
                                             <label for="price">Price :</label>
                                             <input type="number" class="form-control" name="price" placeholder="Price" value="<%= price %>">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group newfont">
                                             <label for="amount">Amount :</label>
                                             <input type="number" class="form-control" name="amount" placeholder="amount" value="<%- amount %>">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group newfont">
                                             <label for="description">Description :</label>
                                             <input type="text" class="form-control" name="description" placeholder="description" value="<%- description %>">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group newfont">
                                             <label for="img_path">Image path :</label>
                                             <input type="text" class="form-control" name="img_path" placeholder="img_path" value="<%- img_path %>">
                                         </div>

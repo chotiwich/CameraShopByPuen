@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator')
 
 const mongodb = require('mongodb');
 const Product = require('../models/products');
+const Cart = require("../models/carts");
 const ObjectId = mongodb.ObjectId;
 
 
@@ -22,6 +23,19 @@ exports.insert = (req, res, next) => {
         pageTitle: '',
     });
 }
+
+exports.showCart = (req, res, next) => {
+    Cart.fetchAll()
+      .then((carts) => {
+        res.render("products/shoppingCart", {
+          pageTitle: "Cart",
+          product_cart: carts,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
 
 exports.getSearchProduct = (req, res, next) => {
@@ -210,6 +224,15 @@ exports.getDeleteProduct = (req, res, next) => {
         .catch(err => console.log(err));
 };
 
+exports.deleteProductCart = (req, res, next) => {
+    const { name } = req.params;
+    Cart.deleteByName(name)
+      .then(() => {
+        res.redirect("/cart");
+      })
+      .catch((err) => console.log(err));
+  };
+
 exports.getSearchProductByLenses = (req, res, next) => {
 
     Product.fetchAllByLenses()
@@ -251,3 +274,21 @@ exports.getSearchProductByDigital_Cameras = (req, res, next) => {
             console.log(err);
         });
 }
+
+exports.addToCart = (req, res, next) => {
+    const { add_to_cart, amount } = req.body;
+    Product.findByName(add_to_cart).then((product) => {
+      product_name = product.product_name;
+      price = product.price;
+      path = product.path;
+      const cart = new Cart(product_name, price, amount, path);
+      cart
+        .save()
+        .then((result) => {
+          res.redirect("/products");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  };

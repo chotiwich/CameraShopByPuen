@@ -1,5 +1,10 @@
 <%- include('../includes/head.ejs') %> 
-
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200&family=Prompt:wght@100&display=swap');
+    .newfont {
+        font-family: 'Kanit', sans-serif;
+    }
+  </style>
 <div class="product-big-title-area">
     <div class="container">
         <div class="row">
@@ -14,7 +19,7 @@
     <div class="row">
         <div class="col-md-12">
             <br>
-            <h2 style="text-align:center;">All Camera Shop Product </h2>
+            <h2 class="newfont" style="text-align:center;">All Camera Shop Product </h2>
             <hr>
             <div class="row">
                 <div class="aa-product-area">
@@ -31,8 +36,8 @@
                                       <!-- <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a> -->
                                       <a class="aa-add-card-btn"href="<%- '/products/detail/'+product._id%>"><span class="fa fa-search"></span>Detail</a>
                                         <figcaption>
-                                        <h4 class="aa-product-title"><%- product.product_name%></a></h4>
-                                        <span class="aa-product-price"><%- product.price%> ฿</span>
+                                        <h4 class="aa-product-title newfont"><%- product.product_name%></a></h4>
+                                        <span class="aa-product-price newfont"><%- product.price%> ฿</span>
                                       </figcaption>
                                     </figure>                        
                                     <div class="aa-product-hvr-content">

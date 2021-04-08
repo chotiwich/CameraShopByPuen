@@ -4,6 +4,7 @@ const { check } = require('express-validator')
 const router = express.Router();
 
 const productsController = require('../controllers/product');
+const cartsController = require('../controllers/cart');
 
 router.get('/', productsController.index);
 
@@ -18,6 +19,8 @@ router.get('/Lenses', productsController.getSearchProductByLenses);
 router.get('/Flashes', productsController.getSearchProductByFlashes);
 
 router.get('/Digital_Cameras', productsController.getSearchProductByDigital_Cameras);
+
+router.get('/cart', cartsController.getCart);
 
 router.get('/products', productsController.getSearchProduct1);
 
@@ -39,6 +42,11 @@ router.post('/products/update', [
     check('price').isFloat({ gt: 0 }).withMessage("greater than zero")
 ], productsController.postUpdateProduct);
 
+router.post('/addcart', [
+    check('product_id').trim().not().isEmpty().withMessage("product name is required"),
+], cartsController.postAddCart);
+
 router.get('/products/delete/:product_id', productsController.getDeleteProduct);
+router.get('/cart/delete/:cart_id', cartsController.getDeleteCart);
 
 exports.routes = router;
